@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Receiving Slip</title>
+</head>
+<body>
+		<h2>Please fill-up the following questions:</h2>
+		<form method="POST" action="/CommunityPantry/{{ ReceiverInfo.id }}/add_info">
+		<label for="Item">Item Name:</label>
+		<input type="text" id="idRIName" name="nameRIName"><br>
+		<label for="Quantity">Quantity Number:</label>
+		<input type="number" id="idRQNumber" name="nameRQNumber">
+		<label for="QuantityD">Quantity Description:</label>
+		<input type="text" id="idRQDescription" name="nameRQDescription" placeholder="kg, pcs, etc."><br>
+		<label for="Item">Item Status:</label>
+		<input type="text" id="idRIStatus" name="nameRIStatus" placeholder="damaged, partially rotten, etc."><br>
+		<label for="QuantityD">Claimed Date:</label>
+		<input type="date" id="idRIDate" name="nameRIDate"><br>
+		<input type="submit" name="btndDone" id="btndDone" value="DONE">
+		{% csrf_token %}
+	</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Receiver Slip</title>
+</head>
+<body>
+		<h2>Welcome Receiver!</h2>
+		<p>Please fill up the form for record keeping. Thank You!</p>
+		<form method="POST" action="/CommunityPantry/new">
+		<input type="text" id="idRName" name="nameRName" placeholder="First Name, M.I., Last Name">
+		<input type="number" id="idRPhone" name="nameRPhone" placeholder="Cellphone Number">
+		<input type="text" id="idRAddress" name="nameRAddress" placeholder="Address">
+							
+		<select id="idRAffiliation" name="nameRAffiliation" placeholder="Choose in the ff.">
+			<option id="idRA1" name="nameRA1" value="Alumni">Alumni</option>
+	    	<option id="idRA2" name="nameRA2" value="Faculty">Faculty</option>
+    		<option id="idRA3" name="nameRA3" value="Student">Student</option>
+    		<option id="idRA4" name="nameRA4" value="Admin">Admin</option>
+    		<option id="idRA5" name="nameRA5" value="None">None</option>
+  		</select>
+		<input type="submit" name="btnRDone" id="btnRDone" value="Submit">
+		{% csrf_token %}
+	</form>
+	</body>
+</html>
