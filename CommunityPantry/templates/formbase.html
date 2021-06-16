@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/css/00.css">
+  <style>
+    body {
+      background-image: url(static/css/cp.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<div class="banner">
+  <div class="navbar">
+    <img src="static/img/MCP.png" class="logo">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="static/css/DonatorSlip.html">Donator</a></li>
+      <li><a href="static/css/ReceiverSlip.html">Receiver</a></li>
+      <li><a href="#">Donation Status</a></li>
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </div>
+</div>
+{% block body %}
+<body>
+  <div class="center">
+    <h1>Welcome Receiver!</h1>
+    <p>
+      Kindly Fill-up the details below for record keeping.<br> Thank you. 
+    </p>
+    <form method="POST" action="/CommunityPantry/new">
+      <div class="txt_field">
+       <input type="text" id="idRName" name="nameRName" required>
+       <label>Name</label>
+       <span></span>
+     </div>
+     <div class="txt_field">
+       <input type="tel" id="idRPhone" name="nameRPhone" minlength="11" maxlength="11" required>
+       <label>Contact Number</label>
+       <span></span>
+     </div>
+     <div class="txt_field">
+       <input type="textarea" id="idRAddress" name="nameRAddress" required>
+       <label>Address</label>
+       <span></span>
+     </div>
+     <div class="txt_field">
+       <input type="submit" name="btnRDone" id="btnRDone" value="Proceed">
+     </div>
+     <div class="note">
+      After accomplishing this form you'll be redirected to Receiving Slip. 
+    </div>
+    <!--{% csrf_token %}-->
+  </form>
+</div>
+</body>
+{% endblock %}
+</html>

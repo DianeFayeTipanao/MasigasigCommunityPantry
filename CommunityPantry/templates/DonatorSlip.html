@@ -1,25 +1,39 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<title>Donator Slip</title>
-</head>
-<body>
-		<h2>Hello Donator!</h2>
-		<p>Answering this information slip will allow us to know your personal information. Your privacy is our topmost concern. Thank you for understanding!</p>
-		<form method="POST" action="">
-		<input type="text" id="idDName" name="nameDName" placeholder="First Name, M.I., Last Name">
-		<input type="text" id="idDAddress" name="nameDAddress" placeholder="Address">
-		<input type="number" id="idDPhone" name="nameDPhone" placeholder="Contact Number">
-		<input type="email" id="idDEmail" name="nameDEmail" placeholder="Email Address">
-				
-		<select id="idDAffiliation" name="nameDAffiliation" placeholder="Choose in the ff.">
-			<option id="idDA1" name="nameDA1" value="Alumni">Alumni</option>
-    		<option id="idDA2" name="nameDA2" value="Faculty">Faculty</option>
-    		<option id="idDA3" name="nameDA3" value="Student">Student</option>
-			<option id="idDA4" name="nameDA4" value="Admin">Admin</option>
-  			<option id="idDA5" name="nameDA5" value="None">None</option>
-  		</select>
-
-		<input type="submit" name="btnDDone" id="btnDDone" value="DONE">		
+<html lang="en" dir="ltr">
+   <head>
+   	  {% extends 'formbase.html' %}
+   </head>
+   <body>
+      <div class="wrapper">
+      	<div class="title">
+			Hello Donator!
+		</div>
+		<div class="description">
+            <p>
+            	Answering this information slip will allow us to know your personal information. Your privacy is our topmost concern. Thank you for understanding!
+            </p>
+        </div>
+			<form method="POST" action="">
+				<div class="field">
+					<input type="text" id="idDName" name="nameDName">
+					<label>Name</label>
+				</div>
+				<div class="field">
+					<input type="number" id="idDPhone" name="nameDPhone" required>
+					<label>Contact Number</label>
+				</div>
+				<div class="field">
+					<input type="text" id="idDAddress" name="nameDAddress">
+					<label>Address</label>
+				</div>
+				<div class="field">
+					<input type="email" id="idDEmail" name="nameDEmail">
+					<label>Email Address</label>
+				</div>
+				<div class="field">
+					<input type="submit" name="btnDDone" id="btnDDone" value="DONE">
+				</div>
+			</form>
+		</div>		
 	</body>
 </html>
