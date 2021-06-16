@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="11.css">
+	<style>
+		body {
+			background-image: url(BG.jpg);
+			background-repeat: no-repeat;
+			background-attachment: fixed;
+			background-size: cover;
+		}
+		input[type=number] {
+			-moz-appearance: textfield;
+		}
+	</style>
+</head>
+<div class="banner">
+	<div class="navbar">
+		<img src="MCP.png" class="logo">
+		<ul>
+			<li><a href="#">Home</a></li>
+			<li><a href="#">Donator</a></li>
+			<li><a href="#">Receiver</a></li>
+			<li><a href="#">Donation Status</a></li>
+			<li><a href="#">Contact Us</a></li>
+		</ul>
+	</div>
+</div>
+<body>
+	<div class="wrapper">
+		<div class="title">
+			Receiving Slip Form
+		</div>
+		<div class="description">
+			<p>
+				Enter all your acquired donations.  
+			</p>
+		</div>
+		<form method="POST" onsubmit="msg()">
+			<div class="field">
+				<input type="text" id="idRIName" name="nameRIName" required>
+				<label>Item Name</label>
+			</div>
+			<div class="field">
+				<input type="number" id="idRQNumber" name="nameRQNumber" required>
+				<label>Quantity Number</label>
+			</div>
+			<div class="field">
+				<input type="text" iid="idRQDescription" name="nameRQDescription" required>
+				<label>Quantity Description</label>
+			</div>
+			<div class="field">
+				<input type="text" iid="idRQDescription" name="nameRQDescription" required>
+				<label>Item Status</label>
+			</div>
+			<div class="field">
+				<input type="date" id="idRIDate" name="nameRIDate" required>
+				<label>Date Donated</label>
+			</div>
+			<div class="field">
+				<input type="submit" name="btnRDone" id="btnRDone" value="Receive">
+				<script type="text/javascript">  
+					function msg(){  
+						alert("God Bless you!");  
+					}  
+				</script> 
+			</div>
+			<!--{% csrf_token %}-->
+		</form>
+	</div>
+	<script>
+		document.getElementById("idRIDate").valueAsDate = new Date()
+	</script>
+</body>
+</html>
