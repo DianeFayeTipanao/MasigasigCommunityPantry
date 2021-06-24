@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/css/0000.css">
+  <style>
+    body {
+      background-image: url(static/css/BG.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    table, td, th {
+      border: 1px solid black;
+      background-color: whitesmoke;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+  </style>
+</head>
+<div class="banner">
+  <div class="navbar">
+    <img src="static/img/MCP.png" class="logo">
+    <ul>
+      <li><a href="Homepage">Home</a></li>
+      <li><a href="donator">Donator</a></li>
+      <li><a href="receiver">Receiver</a></li>
+      <li><a href="displaydonation">Donation Status</a></li>
+      <li><a href="Feedback">Feedback</a></li>
+    </ul>
+  </div>
+<div class="D_table_head">
+  <h1 style="text-align: center; "> List of your Donations</h1>
+<table id="DTable" name="DTable">
+      <br>
+      <tr>
+        <th>Item Name</th>
+        <th>Quantity Number</th>
+        <th>Quantity Description</th>
+        <th>Date Donated</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+      {% for don in dons %}
+      <tr>
+        <td>{{ forloop.counter }}: {{don.item_name}}</td>
+        <td>{{don.quantity_no}}</td>
+        <td>{{don.quantity_description}}</td>
+        <td>{{don.date_donated}}</td>
+        <td><a href="{% url 'update_donation' don.id %}">Update</a></td>
+        <td><a href="{% url 'delete_donation' don.id %}">Delete</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>

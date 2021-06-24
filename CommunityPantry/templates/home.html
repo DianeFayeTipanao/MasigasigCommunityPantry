@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/css/00.css">
+  <style>
+    body {
+      background-image: url(static/css/cp.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<div class="banner">
+  <div class="navbar">
+    <img src="static/img/MCP.png" class="logo">
+    <ul>
+      <li><a href="Homepage">Home</a></li>
+      <li><a href="donator">Donator</a></li>
+      <li><a href="receiver">Receiver</a></li>
+      <li><a href="displaydonation">Donation Status</a></li>
+      <li><a href="Feedback">Feedback</a></li>
+    </ul>
+  </div>
+</div>
+<body>
+  <div class="content">
+    <h1>Magandang Buhay!</h1>
+    <h3>
+     WELCOME TO MASIGASIG COMMUNITY PANTRY
+     <h3>
+      <div>
+        <button id="Butones"><span></span>Donate Now</button>
+        <script type="text/javascript">
+          document.getElementById("Butones").onclick = function () {
+            location.href = "donator";
+          };
+        </script>
+        <button id="Butoness"><span></span>Receive Now</button>
+        <script type="text/javascript">
+          document.getElementById("Butoness").onclick = function () {
+            location.href = "receiver";
+          };
+        </script>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

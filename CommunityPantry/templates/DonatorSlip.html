@@ -1,39 +1,46 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-   <head>
-   	  {% extends 'formbase.html' %}
-   </head>
-   <body>
-      <div class="wrapper">
-      	<div class="title">
-			Hello Donator!
+<html>
+{% extends 'formbase.html' %}
+{% block body %}
+<body>
+	<div class="center">
+		<h1>Welcome Donator!</h1>
+		<p>
+			We ensure that your privacy is our topmost concern, we'll keep your information confidential. Thank you for understanding! 
+		</p>
+		<form method="POST" action="createdonator">
+			{% csrf_token %}
+			<div class="txt_field">
+				<input type="text" id="idDName" name="nameDName" required>
+				<label>Name</label>
+				<span></span>
+			</div>
+			<div class="txt_field">
+				<input type="tel" id="idDPhone" name="nameDPhone" minlength="11" maxlength="11" required>
+				<label>Contact Number</label>
+				<span></span>
+			</div>
+			<div class="txt_field">
+				<input type="textarea" id="idDAddress" name="nameDAddress" required>
+				<label>Address</label>
+				<span></span>
+			</div>
+			<div class="txt_field">
+				<input type="email" id="idDEmail" name="nameDEmail" required>
+				<label>Email Address</label>
+				<span></span>
+			</div>
+			<div class="txt_field">
+				<input type="submit" name="btnRDone" id="btnRDone" value="Proceed">
+			</div>
+			<div class="txt_field">
+			</div>
+			<div class="note">
+				After accomplishing this form you'll be redirected to Donation Slip.
+			</div>
 		</div>
-		<div class="description">
-            <p>
-            	Answering this information slip will allow us to know your personal information. Your privacy is our topmost concern. Thank you for understanding!
-            </p>
-        </div>
-			<form method="POST" action="">
-				<div class="field">
-					<input type="text" id="idDName" name="nameDName">
-					<label>Name</label>
-				</div>
-				<div class="field">
-					<input type="number" id="idDPhone" name="nameDPhone" required>
-					<label>Contact Number</label>
-				</div>
-				<div class="field">
-					<input type="text" id="idDAddress" name="nameDAddress">
-					<label>Address</label>
-				</div>
-				<div class="field">
-					<input type="email" id="idDEmail" name="nameDEmail">
-					<label>Email Address</label>
-				</div>
-				<div class="field">
-					<input type="submit" name="btnDDone" id="btnDDone" value="DONE">
-				</div>
-			</form>
-		</div>		
+	</form>
 	</body>
-</html>
+	{% endblock %}
+	</html>
+

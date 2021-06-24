@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" href="static/css/1.css">
+  <style>
+    body {
+      background-image: url(static/css/BG.jpg);
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+<div class="banner">
+  <div class="navbar">
+    <img src="static/img/MCP.png" class="logo">
+    <ul>
+      <li><a href="Homepage">Home</a></li>
+      <li><a href="donator">Donator</a></li>
+      <li><a href="receiver">Receiver</a></li>
+      <li><a href="displaydonation">Donation Status</a></li>
+      <li><a href="Feedback">Feedback</a></li>
+    </ul>
+  </div>
+</div>
+<body>
+	<div class="wrapper">
+		<div class="title">
+			Feedback Form
+		</div>
+		<div class="description">
+			<p>
+				We want to know your invaluable insights, to help us improve. Thank you.  
+			</p><br>
+		</div>
+		<label style="font-size: 20px; color: blue;">Please Rate us:</label><br>
+				<input type="radio" id="idRating5" name="nameRating">
+				<label for="Very Satisfied">5</label>
+				<input type="radio" id="idRating4" name="nameRating">
+				<label for="Satisfied">4</label>  
+				<input type="radio" id="idRating3" name="nameRating">
+				<label for="Neutral">3</label> 
+				<input type="radio" id="idRating2" name="nameRating">
+				<label for="Neutral">2</label>
+				<input type="radio" id="idRating1" name="nameRating">
+				<label for="Neutral">1</label><br><br>
+		<form method="POST" action="createdfeedback">
+			<div class="field">
+				<input type="text" id="idComments" name="nameComments">
+				<label>Comments</label>
+			</div>
+			<div class="field">
+				<input type="text" id="idSuggestions" name="nameSuggestions">
+				<label>Suggestions</label>
+			</div>
+			<div class="field">
+				<input type="submit" name="btnRDone" id="btnRDone" value="Submit">
+			</div>
+			{% csrf_token %}
+		</form>
+	</div>
+</body>
+</html>

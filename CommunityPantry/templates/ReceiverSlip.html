@@ -1,30 +1,39 @@
 <!DOCTYPE html>
 <html>
 <head>
-  {% extends 'formbase.html' %}
-</head>
+{% extends 'formbase.html' %}
 {% block body %}
+</head>
 <body>
-  <div class="content">
-    <h1>Magandang Buhay!</h1>
-    <h3>
-     WELCOME TO MASIGASIG COMMUNITY PANTRY
-     <h3>
-      <div>
-        <button id="Butones"><span></span>Donate Now</button>
-        <script type="text/javascript">
-          document.getElementById("Butones").onclick = function () {
-            location.href = "static/css/DonatorSlip.html";
-          };
-        </script>
-        <button id="Butoness"><span></span>Receive Now</button>
-        <script type="text/javascript">
-          document.getElementById("Butoness").onclick = function () {
-            location.href = "static/css/ReceiverSlip.html";
-          };
-        </script>
-      </div>
-    </form>
+  <div class="center">
+    <h1>Welcome Receiver!</h1>
+    <p>
+      Kindly Fill-up the details below for record keeping.<br> Thank you. 
+    </p>
+    <form method="POST" action="createdreceiver">
+      <div class="txt_field">
+       <input type="text" id="idRName" name="nameRName" required>
+       <label>Name</label>
+       <span></span>
+     </div>
+     <div class="txt_field">
+       <input type="tel" id="idRPhone" name="nameRPhone" minlength="11" maxlength="11" required>
+       <label>Contact Number</label>
+       <span></span>
+     </div>
+     <div class="txt_field">
+       <input type="textarea" id="idRAddress" name="nameRAddress" required>
+       <label>Address</label>
+       <span></span>
+     </div>
+     <div class="txt_field">
+       <input type="submit" name="btnRDone" id="btnRDone" value="Proceed">
+     </div>
+     <div class="note">
+      After accomplishing this form you'll be redirected to Receiving Slip. 
+    </div>
+    {% csrf_token %}
+  </form>
   </div>
 </body>
 {% endblock %}

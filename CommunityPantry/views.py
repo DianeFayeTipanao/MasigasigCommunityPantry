@@ -1,45 +1,83 @@
-from django.shortcuts import redirect, render
-from CommunityPantry.models import ReceiverInfo, ReceivedDonations
+from django.shortcuts import render, redirect
+from CommunityPantry.models import DonatorInfo, Donation, ReceiverInfo, ReceivedDonations, ReceiverFeedback
+from .forms import DonationForm
 
-#Displaying ReceiverInformation
-def receiver_info(request):
-	return render(request,'ReceiverSlip.html')
-	views_RInfo = ReceiverInfo.objects.all()
-	return render(request, 'ReceiverSlip.html', {'ReceiverInfo': views_RInfo})
+def HomeBase(request):
+	return render(request, 'home.html')
+def Homepage(request):
+	return render(request, 'home.html')
 
-#Displaying ReceivedDonations
-def received_donation(request, rd_id):
-	views_RDonation = ReceivedDonations.objects.get(id=rd_id)
-	ReceivedDonations.objects.create(item_received=request.POST['nameIReceived'], r_quantity=request.POST['nameRQuantinty'], r_quantitydescription=request.POST['nameRQDescription'], item_status=request.POST['nameIStatus'], date_received=request.POST['nameDReceived'], ReceivedDonations=views_RDonation)
-	return render(request, 'ReceivingSlip.html', {'received_id': views_RDonation})
+def donator(request):
+	return render(request, 'DonatorSlip.html')
+def createdonator(request):
+	don=DonatorInfo.objects.create(
+		d_name = request.POST['nameDName'], 
+		d_contact = request.POST['nameDPhone'],
+		d_address = request.POST['nameDAddress'],
+		d_email = request.POST['nameDEmail'],
+		)
+	return render(request,'DonationSlip.html')
+def createddonation(request):
+	dntn=Donation.objects.create(
+		item_name = request.POST['nameDIName'], 
+		quantity_no = request.POST['nameDQNumber'],
+		quantity_description = request.POST['nameDQDescription'],
+		date_donated = request.POST['nameDDate'],
+		)
+	return render(request,'DonationSlip.html')
+def displaydonation(request):
+	dons=Donation.objects.all()
+	context ={'dons':dons}
+	return render(request,'DonationStatus.html', context)
 
-#Displaying ReceiverInfo in ReceivingSlip.html
-def add_RInfo(request):
-	new_info = ReceiverInfo.objects.create(r_name=request.POST['nameRName'], r_contact=request.POST['nameRContact'], r_address=request.POST['nameRAddress'], r_affiliation=request.POST['nameRAffiliation'])
-	return redirect (f'/CommunityPantry/{new_info.id}/')
+def receiver(request):
+	return render(request, 'ReceiverSlip.html')
+def createdreceiver(request):
+	rcvr=ReceiverInfo.objects.create(
+		r_name = request.POST['nameRName'], 
+		r_contact = request.POST['nameRPhone'],
+		r_address = request.POST['nameRAddress'],
+		)
+	return render(request,'ReceivingSlip.html')
+def createdreceived(request):
+	rcvd=ReceivedDonations.objects.create(
+		item_received = request.POST['nameRIName'],
+		r_quantity = request.POST['nameRQNumber'], 
+		r_quantitydescription = request.POST['nameRQDescription'],
+		item_status = request.POST['nameRIStatus'],
+		date_received = request.POST['nameRIDate'],
+		)
+	return render(request,'ReceivingSlip.html')
 
-#Displaying ReceivedDonations in different URL
-def new_RDonation(request, ri_id):
-	add_rdonations = ReceivedDonations.object.get(id=ri_id)
-	ReceivedDonations.objects.create(item_received=request.POST['nameIReceived'], r_quantity=request.POST['nameRQuantinty'], r_quantitydescription=request.POST['nameRQDescription'], item_status=request.POST['nameIStatus'], date_received=request.POST['nameDReceived'], ReceivedDonations=add_rdonations)
-	return redirect (f'/CommunityPantry/{add_rdonations.id}/')
+def Feedback(request):
+	return render (request, 'Feedback.html')
+def createdfeedback(request):
+	rcvrfd=ReceiverFeedback.objects.create(
+		comments = request.POST['nameComments'],
+		Suggestions = request.POST['nameSuggestions'],
+		)
+	return render(request,'Feedback.html')
 
-'''def receiver_feedback(request, rf_id):
-	return render(request,'RFeedbackForm.html')
-	views_RFeedback = ReceiverInfo.object.get(id=rf_id)
-	return render(request,'RFeedbackForm.html', {ReceiverInfo: views_RFeedback})
+def updateDonation(request, pk):
 
-def donator_info(request):
-	return render(request,'DInfoForm.html')
-	views_DInfo = DonatorInfo.objects.all()
-	return render(request,'DInforForm.html', {'DInventory': views_DInfo})
+	diane = Donation.objects.get(id=pk)
+	form = DonationForm(instance=diane)
 
-def donation_inventory(request,di_id):
-	views_DInventory = DonatorInfo.objects.get(id=di_id)
-	return render(request,'DInventoryForm.html', {'DonatorInfo': views_DInventory})
+	if request.method == 'POST':
+		form = DonationForm(request.POST, instance=diane)
+		if form.is_valid():
+			form.save()
+			return redirect('displaydonation')
 
-def donation_status(request,ds_id):
-	views_DStatus = DInventory.objects.get(id=ds_id)
-	return render (request,'DStatusForm.html',{'DInventory': views_DStatus})'''
+	context = {'form':form}
+	return render(request, 'update.html', context)
 
-# Create your views here.
+def deleteDonation(request, pk):
+	diane = Donation.objects.get(id=pk)
+	if request.method == "POST":
+		diane.delete()
+		return redirect('displaydonation')
+
+	context = {'item':diane}
+	return render(request, 'delete.html', context)
+

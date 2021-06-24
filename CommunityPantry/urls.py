@@ -1,24 +1,26 @@
-"""ProjFinale URL Configuration
-
-The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/3.1/topics/http/urls/
-Examples:
-Function views
-    1. Add an import:  from my_app import views
-    2. Add a URL to urlpatterns:  path('', views.home, name='home')
-Class-based views
-    1. Add an import:  from other_app.views import Home
-    2. Add a URL to urlpatterns:  path('', Home.as_view(), name='home')
-Including another URLconf
-    1. Import the include() function: from django.urls import include, path
-    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
-"""
-from django.conf.urls import url
-from CommunityPantry import views 
+from django.urls import path
+from . import views
 
 urlpatterns = [
-	url(r'^new$', views.received_donation, name='received_donation'),
-	url(r'^(\d+)/$', views.add_RInfo, name='add_RInfo'),
-    url(r'^(\d+)/add_info$', views.new_RDonation, name='new_RDonation'),
+    path('', views.HomeBase),
+    path('Homepage', views.HomeBase, name="Homepage"),
+    path('Feedback', views.Feedback, name="Feedback"),
 
+    path('donator', views.donator, name="donator"),
+    path('createdonator', views.createdonator, name="createdonator"),
+    path('createddonation', views.createddonation, name="createddonation"),
+    path('displaydonation', views.displaydonation, name="displaydonation"),
+
+    path('receiver', views.receiver, name="receiver"),
+    path('createdreceiver', views.createdreceiver, name="createdreceiver"), 
+    path('createdreceived', views.createdreceived, name="createdreceived"), 
+
+    path('Feedback', views.Feedback, name="Feedback"),
+    path('createdfeedback', views.createdfeedback, name="createdfeedback"),
+
+    path('update_donation/<str:pk>/', views.updateDonation, name="update_donation"),
+    path('delete_donation/<str:pk>/', views.deleteDonation, name="delete_donation"),
+
+    #path('donatorform', views.donatorform, name="donatorform"),
+    #path('receiverform', views.receiverform, name="receiverform"),
 ]

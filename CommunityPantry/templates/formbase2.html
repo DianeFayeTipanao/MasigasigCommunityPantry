@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <link rel="stylesheet" href="0000.css">
+  <link rel="stylesheet" href="static/css/1.css">
   <style>
     body {
-      background-image: url(BG.jpg);
+      background-image: url(static/css/BG.jpg);
       background-repeat: no-repeat;
       background-attachment: fixed;
       background-size: cover;
@@ -16,23 +16,24 @@
 </head>
 <div class="banner">
   <div class="navbar">
-    <img src="MCP.png" class="logo">
+    <img src="static/img/MCP.png" class="logo">
     <ul>
-      <li><a href="#">Home</a></li>
-      <li><a href="#">Donator</a></li>
-      <li><a href="#">Receiver</a></li>
-      <li><a href="#">Donation Status</a></li>
-      <li><a href="#">Contact Us</a></li>
+      <li><a href="Homepage">Home</a></li>
+      <li><a href="donator">Donator</a></li>
+      <li><a href="receiver">Receiver</a></li>
+      <li><a href="displaydonation">Donation Status</a></li>
+      <li><a href="Feedback">Feedback</a></li>
     </ul>
   </div>
 </div>
+{% block body %}
 <body>
   <div class="center">
     <h1>Welcome Receiver!</h1>
     <p>
       Kindly Fill-up the details below for record keeping.<br> Thank you. 
     </p>
-    <form method="POST" action="ReceivingSlip.html">
+    <form method="POST" action="/CommunityPantry/new">
       <div class="txt_field">
        <input type="text" id="idRName" name="nameRName" required>
        <label>Name</label>
@@ -58,4 +59,5 @@
   </form>
 </div>
 </body>
+{% endblock %}
 </html>
